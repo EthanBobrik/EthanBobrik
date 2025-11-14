@@ -12,7 +12,19 @@ I’m **Ethan Bobrik**, a passionate Data Science student at Western University 
 ---
 
 # 🏆 GitHub Projects
+Currently Working on: 
+### 🏦 Post Earnings Announcement Drift Predictor
+A FinTech project focused on the Drift anomaly that occurs post-earnings announcements for numerous time intervals while accounting for the Value-Glamour anomaly as well.
+- Dataset extraction from yfinance and AlphaVantage
+- Q&A Earnings transcripts sentiment analysis using FinBert Model
+- Feature engineering involves creating technical indicators, statistical metrics, and incorporating alternative data.
+- **Planning** on incorporating a multi-modal neural network as the model. 
 
+### Reinforcement Learning powered MLB Bullpen Strategy
+- Constructing an environment that includes all game-time factors, such as In-game status, Batter handedness and current form, bullpen current form, and Upcoming lineup statistics.
+- **Planning** on constructing a model-free agent to develop a strategy on whether to keep or pull a pitcher from the game and who to replace them with.
+
+Completed:
 ### 👃 ScentFinder
 A complete pipeline from scraping to model building and evaluation to output niche fragrance recommendations based on favourite notes and accords:
 - Web scraping of notes plus a pre-cleaned dataset from Kaggle
