@@ -1,19 +1,30 @@
 👋 Hey there,
 
-I’m **Ethan Bobrik**, a Data Science student at Western University who builds machine learning systems for finance, retrieval, and applied research.
+I’m **Ethan Bobrik**, a Data Science student at Western University who builds machine learning systems for finance and applied research.
 
 ---
 
 # 💫 About Me
 
-- 🎯 Focused on RAG systems, quantitative finance, and applied deep learning
+- 🎯 Focused on quantitative finance and applied deep learning
 - 🎓 Data Science student at Western University (expected graduation: 2027)
 - 🧠 Interested in the engineering side of ML: retrieval, evaluation, and production concerns, not only model accuracy
-- ⚡ Fun fact: I spend more time in the gym than at home
 
 ---
 
 # 🏆 Featured Projects
+
+### 📈 SurfaceAlpha — Volatility Surfaces as Images
+**[SurfaceAlpha](https://github.com/EthanBobrik/SurfaceAlpha)**
+
+A research-grade quantitative finance project that models equity option markets by treating implied volatility surfaces as multi-channel images.
+
+- Fuses a **Vision Transformer** over the IV surface with a temporal returns encoder and a macro context encoder
+- Routes the fused representation through a **regime-conditional Mixture of Experts**
+- Produces three simultaneous outputs: a forward realized-volatility forecast, a tail-risk probability, and a market-regime classification
+- Drives a live portfolio overlay with per-regime position sizing, vol targeting, and short overlays
+- **Stack:** PyTorch, multimodal encoders, config-driven training and backtesting
+
 
 ### 🤖 MultiDocChat — RAG with an LLMOps Toolkit
 **[RAG-LLMOps](https://github.com/EthanBobrik/RAG-LLMOps)** · [Live demo](https://multidocchat.onrender.com/)
@@ -26,17 +37,6 @@ A multi-document conversational RAG application built around production concerns
 - **Token streaming (SSE):** answers stream token-by-token, cutting time-to-first-token from ~1.5s to ~0.5s versus the blocking endpoint
 - **Operable:** structured JSON logging, per-request latency metrics, local on-device embeddings, and a pluggable session store (in-memory or Redis)
 - **Stack:** FastAPI, LangChain (LCEL), LangGraph, FAISS, fastembed
-
-### 📈 SurfaceAlpha — Volatility Surfaces as Images
-**[SurfaceAlpha](https://github.com/EthanBobrik/SurfaceAlpha)**
-
-A research-grade quantitative finance project that models equity option markets by treating implied volatility surfaces as multi-channel images.
-
-- Fuses a **Vision Transformer** over the IV surface with a temporal returns encoder and a macro context encoder
-- Routes the fused representation through a **regime-conditional Mixture of Experts**
-- Produces three simultaneous outputs: a forward realized-volatility forecast, a tail-risk probability, and a market-regime classification
-- Drives a live portfolio overlay with per-regime position sizing, vol targeting, and short overlays
-- **Stack:** PyTorch, multimodal encoders, config-driven training and backtesting
 
 ---
 
