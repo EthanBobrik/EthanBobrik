@@ -14,6 +14,32 @@ I’m **Ethan Bobrik**, a Data Science student at Western University who builds 
 
 # 🏆 Featured Projects
 
+### 🎓 Undergraduate Thesis: American Option Pricing under Heston-Nandi GARCH *(in progress)*
+**[hn-garch-american-options](https://github.com/EthanBobrik/hn-garch-american-options)**
+
+Pricing American options when volatility follows a Heston-Nandi GARCH process, using Least-Squares Monte Carlo (LSM) to learn the early-exercise policy.
+
+- Simulates risk-neutral HN-GARCH price and conditional-variance paths, with separate seeded random streams for fitting the policy and evaluating it
+- Prices Europeans with the closed-form Heston-Nandi solution, using the characteristic function and numerical integration
+- Uses a Monte Carlo European pricer with standard errors to check the simulator against the closed form
+- Runs config-driven experiments over a grid of GARCH environments, strikes, and maturities
+- Includes a pytest suite covering simulation, sampling, and European pricing
+- **Stack:** Python, NumPy, SciPy, pytest
+
+
+### 🧠 KDA Gate Granularity: How Fine-Grained Should Forgetting Be?
+**[kda-gate-granularity](https://github.com/noahkostesku/kda-gate-granularity)** · with [Noah Kostesku](https://github.com/noahkostesku)
+
+A pre-registered, controlled study of decay-gate granularity in Kimi Delta Attention (KDA), a delta-rule linear attention layer. KDA learns one decay gate per key channel and Gated DeltaNet learns one per head. This study treats the number of gates per head, G, as a dial between those two designs and tests whether finer gates help because a sequence needs several memory timescales at once.
+
+- Sweeps G = 1, 2, 4, 8, 16, 32 in 2-layer, ~0.65M-parameter models trained from scratch on a synthetic multi-timescale recall task, with key-value lags from 16 to 1,024 tokens
+- Fixed the hypotheses, margins, and analysis code in a pre-registration before the main runs, and logged every deviation; the final analysis covers 479 runs
+- Found that finer gates did not help: one gate per head matched 32 gates and beat them on the longest lag band (94% vs. 47% accuracy), and the predicted benefit of mixing lag bands did not appear
+- Showed that heads matter more than gates: 4 heads beat 1 head at the same number of decay rates by 7 to 15 points
+- Showed through gate ablations that the long-lived gates carry the long-range memory: disabling the longest-lived 20% costs 43 points, against 30 for a random 20%
+- Built a reproducible pipeline: a plain-PyTorch reference recurrence as ground truth for the GPU kernels, hash-pinned test sets, SLURM array jobs on the Alliance clusters, and one command that rebuilds every reported number
+- **Stack:** PyTorch, R, SLURM, pytest
+
 ### 📈 SurfaceAlpha — Volatility Surfaces as Images
 **[SurfaceAlpha](https://github.com/EthanBobrik/SurfaceAlpha)**
 
@@ -28,7 +54,6 @@ A research-grade quantitative finance project that models equity option markets 
 
 ### 🤖 MultiDocChat — RAG with an LLMOps Toolkit
 **[RAG-LLMOps](https://github.com/EthanBobrik/RAG-LLMOps)** · [Live demo](https://multidocchat.onrender.com/)
-
 A multi-document conversational RAG application built around production concerns rather than a bare demo. Upload PDFs, Word, or text files and chat with them, with answers grounded in retrieved content and a pipeline that is measurable and swappable.
 
 - **Eval-gated quality:** an LLM-as-judge harness scores correctness, faithfulness, answer relevancy, and context precision/recall against a golden dataset, and fails CI if quality regresses below thresholds
@@ -42,15 +67,18 @@ A multi-document conversational RAG application built around production concerns
 
 # 🔬 In Progress
 
-### 🏦 Post-Earnings Announcement Drift Predictor
+### 🏦 Post-Earnings Announcement Drift (PEAD) Forecasting
 **[Post-Earnings-Announcement-Drift-Prediction](https://github.com/EthanBobrik/Post-Earnings-Announcement-Drift-Prediction)**
 
-Predicting the drift anomaly that follows earnings announcements across multiple time intervals, while accounting for the value-glamour anomaly.
+A pipeline that predicts the drift following earnings announcements from earnings events, call transcripts, and market reactions, with value-glamour controls.
 
-- Dataset extraction from yfinance and AlphaVantage
-- Sentiment analysis on Q&A earnings-call transcripts using the FinBERT model
-- Feature engineering across technical indicators, statistical metrics, and alternative data
-- Planning a multi-modal neural network as the core model
+- Builds features from earnings events (EPS surprise, report time, opening gap, volume shock, volatility) and Alpha Vantage transcript sentiment, with optional FinBERT embeddings
+- Controls for value-glamour effects with EP, BM, CP, and sales growth
+- Produces probabilistic forecasts of 5-day and 20-day drift direction, with optional BHAR magnitude forecasts
+- Compares calibrated logistic regression and XGBoost baselines against a multimodal tabular + transcript fusion model and a TCN over pre-event price sequences
+- Prevents look-ahead leakage by timing every feature to the first tradeable open after the report
+- Includes an event-driven backtest with probability-weighted position sizing and a real-time inference demo
+- **Stack:** Python, XGBoost, PyTorch, FinBERT, Alpha Vantage
 
 ---
 
